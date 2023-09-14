@@ -3,21 +3,36 @@ import TopLocations from './components/TopLocations';
 import Inputs from './components/Inputs';
 import LocationTime from './components/LocationTime';
 import TempDetails from './components/TempDetails';
-import Forecast from './components/Forecast';
-import { useState } from 'react';
+import getFormattedCurrentWeather from './services/weatherService';
+import { useEffect, useState } from 'react';
 
 function App() {
 
-  const [city, setCity] = useState('')
-  const [weatherInfo, setWeatherInfo] = useState(null)
+  const [query, setQuery] = useState({q: 'toronto'})
+  const [units, setUnits] = useState('metric')
+  const [weather, setWeather] = useState(null)
+
+  useEffect(() => {
+    const fetchWeather = async () => {
+      await getFormattedCurrentWeather({...query, units}).then(data => {
+        setWeather(data);
+      });
+    };
+  
+    fetchWeather();
+  }, [query, units]);
 
   return (
-    <div className="mx-auto max-w-screen-md mt-4 py-5 px-32 bg-gradient-to-br from-cyan-700 to-blue-700 hfit shadow-xl shadow-gray-400 rounded-3xl" >
-      <TopLocations />
-      <Inputs />
+    <div className="mx-auto max-w-screen-md mt-4 py-5 px-32 bg-gradient-to-br from-cyan-700 to-orange-500 hfit shadow-xl shadow-gray-400 rounded-3xl" >
+      <TopLocations setQuery={setQuery}/>
+      <Inputs setQuery={setQuery} units={units} setUnits={setUnits} />
 
-      <LocationTime />
-      <TempDetails />
+      {weather && (
+        <div>
+          <LocationTime weather={weather}/>
+          <TempDetails weather={weather}/>
+        </div>
+      )}
 
     </div>
   );

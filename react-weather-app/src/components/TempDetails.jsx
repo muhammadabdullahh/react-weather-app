@@ -1,30 +1,29 @@
 import React from 'react'
 import {
-    UilArrowDown,
-    UilArrowUp,
     UilSun,
     UilWind,
     UilTear,
     UilSunset,
     UilTemperature,
 } from "@iconscout/react-unicons";
+import { formatToLocalTime, iconURLFromCode } from '../services/weatherService';
 
-function TempDetails() {
+function TempDetails({weather: {feels_like, humidity, temp, temp_max, temp_min, sunrise, sunset, icon, speed}}) {
     return (
         <div>
 
-            <div className='flex items-center justify-center my-12'>
+            <div className='flex items-center justify-center my-2 '>
                 <img
-                    src='http://openweathermap.org/img/wn/01d@2x.png'
+                    src={iconURLFromCode(icon)}
                     alt=''
-                    className='w-20'
+                    className='my-2'
                 />
             </div>
 
-            <div className='flex items-center justify-center text-white my-12'>
+            <div className='flex items-center justify-center text-white my-2'>
 
                 <p className='text-9xl'>
-                    00°
+                    {`${temp.toFixed()}°`}
                 </p>
             </div>
             <div className='flex flex-col space-y-2 text-white'>
@@ -33,7 +32,7 @@ function TempDetails() {
                     <UilTemperature size={18} className='mr-1' />
                     Feels like:
                     <span className='font-medium ml-1'>
-                        00°
+                        {`${feels_like.toFixed()}°`}
                     </span>
                 </div>
 
@@ -41,7 +40,7 @@ function TempDetails() {
                     <UilTear size={18} className='mr-1' />
                     Humidity:
                     <span className='font-medium ml-1'>
-                        00%
+                        {`${humidity.toFixed()}%`}
                     </span>
                 </div>
 
@@ -49,7 +48,7 @@ function TempDetails() {
                     <UilWind size={18} className='mr-1' />
                     Wind:
                     <span className='font-medium ml-1'>
-                        00 km/h
+                        {`${speed.toFixed()} km/h`}
                     </span>
                 </div>
 
@@ -59,25 +58,33 @@ function TempDetails() {
 
                 <UilSun />
                 <p className='font-light'>
-                    Rise: <span>00:00 AM</span>
+                    Rise: <span>
+                        {formatToLocalTime(sunrise, "hh:mm a")}
+                    </span>
                 </p>
                 <p className='font-light'>|</p>
 
                 <UilSunset />
                 <p className='font-light'>
-                    Set: <span>00:00 AM</span>
+                    Set: <span>
+                    {formatToLocalTime(sunset, "hh:mm a")}
+                    </span>
                 </p>
                 <p className='font-light'>|</p>
 
                 <UilSun />
                 <p className='font-light'>
-                    High: <span>00°</span>
+                    High: <span>
+                        {`${temp_max.toFixed()}°`}
+                    </span>
                 </p>
                 <p className='font-light'>|</p>
 
                 <UilSun />
                 <p className='font-light'>
-                    Low: <span>00°</span>
+                    Low: <span>
+                        {`${temp_min.toFixed()}°`}
+                    </span>
                 </p>
                 <p className='font-light'>|</p>
 

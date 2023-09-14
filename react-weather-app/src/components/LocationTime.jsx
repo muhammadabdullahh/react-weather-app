@@ -1,11 +1,11 @@
 import React from 'react'
 
-function LocationTime() {
+function LocationTime({ weather: { name, country } }) {
   return (
     <div>
         <div className='flex items-center justify-center mt-12'>
             <p className='text-white text-5xl font-medium'>
-                Location
+                {`${name}, ${country}`}
             </p>
         </div>
 
