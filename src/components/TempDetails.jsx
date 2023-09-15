@@ -23,7 +23,7 @@ function TempDetails({weather: {feels_like, humidity, temp, temp_max, temp_min, 
             <div className='flex items-center justify-center text-white my-2'>
 
                 <p className='text-9xl'>
-                    {`${temp.toFixed()}°`}
+                    {`${temp.toFixed()}°C`}
                 </p>
             </div>
             <div className='flex flex-col space-y-2 text-white'>
@@ -32,7 +32,7 @@ function TempDetails({weather: {feels_like, humidity, temp, temp_max, temp_min, 
                     <UilTemperature size={18} className='mr-1' />
                     Feels like:
                     <span className='font-medium ml-1'>
-                        {`${feels_like.toFixed()}°`}
+                        {`${feels_like.toFixed()}°C`}
                     </span>
                 </div>
 
@@ -75,7 +75,7 @@ function TempDetails({weather: {feels_like, humidity, temp, temp_max, temp_min, 
                 <UilSun />
                 <p className='font-light'>
                     High: <span>
-                        {`${temp_max.toFixed()}°`}
+                        {`${temp_max.toFixed()}°C`}
                     </span>
                 </p>
                 <p className='font-light'>|</p>
@@ -83,7 +83,7 @@ function TempDetails({weather: {feels_like, humidity, temp, temp_max, temp_min, 
                 <UilSun />
                 <p className='font-light'>
                     Low: <span>
-                        {`${temp_min.toFixed()}°`}
+                        {`${temp_min.toFixed()}°C`}
                     </span>
                 </p>
                 <p className='font-light'>|</p>

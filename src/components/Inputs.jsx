@@ -44,21 +44,6 @@ function Inputs({ setQuery, units, setUnits }) {
                     onClick={handleLocationClick}/>
             </div>
 
-            <div className='flex flex-row w-1/4 items-center justify-center '>
-                <button
-                    name='metric'
-                    className='textxl text-white font-light transition ease-out hover:scale-125'>
-                    °C
-                </button>
-                <p
-                    className='text-xl text-white mx-1'>|</p>
-                <button
-                    name='imperial'
-                    className='textxl text-white font-ligh transition ease-out hover:scale-125' t >
-                    °F
-                </button>
-            </div>
-
         </div>
     )
 }
