@@ -8,7 +8,7 @@ import {
 } from "@iconscout/react-unicons";
 import { formatToLocalTime, iconURLFromCode } from '../services/weatherService';
 
-function TempDetails({weather: {feels_like, humidity, temp, temp_max, temp_min, sunrise, sunset, icon, speed}}) {
+function TempDetails({ weather: { feels_like, humidity, temp, temp_max, temp_min, sunrise, sunset, icon, speed } }) {
     return (
         <div>
 
@@ -54,41 +54,33 @@ function TempDetails({weather: {feels_like, humidity, temp, temp_max, temp_min, 
 
             </div>
 
-            <div className='flex flex-row items-center justify-center space-x-2 text-white text-sm py-3'>
-
-                <UilSun />
-                <p className='font-light'>
-                    Rise: <span>
-                        {formatToLocalTime(sunrise, "hh:mm a")}
-                    </span>
-                </p>
-                <p className='font-light'>|</p>
-
-                <UilSunset />
-                <p className='font-light'>
-                    Set: <span>
-                    {formatToLocalTime(sunset, "hh:mm a")}
-                    </span>
-                </p>
-                <p className='font-light'>|</p>
-
-                <UilSun />
-                <p className='font-light'>
-                    High: <span>
-                        {`${temp_max.toFixed()}°C`}
-                    </span>
-                </p>
-                <p className='font-light'>|</p>
-
-                <UilSun />
-                <p className='font-light'>
-                    Low: <span>
-                        {`${temp_min.toFixed()}°C`}
-                    </span>
-                </p>
-                <p className='font-light'>|</p>
-
+            <div className='flex flex-col items-center justify-center sm:flex-row sm:items-center sm:space-x-2 text-white text-sm py-3'>
+                <div className="flex items-center">
+                    <UilSun />
+                    <p className='font-light'>
+                        Rise: <span>{formatToLocalTime(sunrise, "hh:mm a")}</span>
+                    </p>
+                </div>
+                <div className="flex items-center">
+                    <UilSunset />
+                    <p className='font-light'>
+                        Set: <span>{formatToLocalTime(sunset, "hh:mm a")}</span>
+                    </p>
+                </div>
+                <div className="flex items-center">
+                    <UilSun />
+                    <p className='font-light'>
+                        High: <span>{`${temp_max.toFixed()}°C`}</span>
+                    </p>
+                </div>
+                <div className="flex items-center">
+                    <UilSun />
+                    <p className='font-light'>
+                        Low: <span>{`${temp_min.toFixed()}°C`}</span>
+                    </p>
+                </div>
             </div>
+
 
         </div>
     )

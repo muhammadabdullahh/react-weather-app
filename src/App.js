@@ -23,7 +23,7 @@ function App() {
   }, [query, units]);
 
   return (
-    <div className="mx-auto max-w-screen-md mt-4 py-5 px-32 bg-gradient-to-br from-cyan-700 to-orange-500 hfit shadow-xl shadow-gray-400 rounded-3xl" >
+    <div className="mx-auto max-w-screen-md mt-4 p-4 lg:px-32 bg-gradient-to-br from-cyan-700 to-orange-500 hfit shadow-xl shadow-gray-400 rounded-3xl" >
       <TopLocations setQuery={setQuery}/>
       <Inputs setQuery={setQuery} units={units} setUnits={setUnits} />
 
